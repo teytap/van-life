@@ -6,8 +6,10 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #fff7ed;
+
   font-family: "Inter", sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 body::-webkit-scrollbar {
@@ -23,13 +25,15 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #fff7ed;
+  box-shadow: 0px 3px 10px rgb(186, 183, 183);
 }
 
 header {
   height: 110px;
   display: flex;
   align-items: center;
-  padding-block: 10px;
+  padding: 10px;
 }
 
 header .site-logo {
@@ -44,7 +48,7 @@ header a {
   text-decoration: none;
   color: #4d4d4d;
   font-weight: 600;
-  padding: 5px 20px;
+  padding: 5px 10px;
 }
 
 header a:hover {
@@ -331,6 +335,9 @@ i[class*="van-type-"] {
   color: unset;
   text-decoration: unset;
 }
+.host-vans-title {
+  padding-left: 20px;
+}
 .host-van-single {
   background-color: white;
   display: flex;
@@ -405,4 +412,21 @@ i[class*="van-type-"] {
 .host-van-price > span {
   font-size: 16px;
   color: #4d4d4d;
+}
+hr {
+  border: 1px solid #ffead0;
+}
+
+@media (max-width: 570px) {
+  .van-list {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    /* grid-column: auto; */
+  }
+  .host-van-card {
+    display: grid;
+  }
+  .host-van-card-desc {
+    margin-top: 20px;
+    padding: 0;
+  }
 }

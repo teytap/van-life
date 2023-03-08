@@ -40,6 +40,7 @@ export default function HostVanDetail() {
               </p>
             </div>
           </div>
+          <hr />
           <nav className="host-van-detail-nav">
             <NavLink
               to="."
@@ -61,6 +62,7 @@ export default function HostVanDetail() {
               Photos
             </NavLink>
           </nav>
+
           <Outlet context={{ vanDetail }} />
         </div>
       ) : (

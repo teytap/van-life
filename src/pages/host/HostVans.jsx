@@ -27,5 +27,10 @@ export default function HostVans() {
       </div>
     </Link>
   ));
-  return <div className="host-vans-container">{hostVanElements}</div>;
+  return (
+    <div className="host-vans-container">
+      <h1 className="host-vans-title">Your listed vans</h1>
+      {hostVanElements}
+    </div>
+  );
 }
