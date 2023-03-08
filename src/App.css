@@ -348,10 +348,14 @@ i[class*="van-type-"] {
 .host-van-detail {
   background-color: white;
   padding: 20px;
+  margin-top: 20px;
 }
 .host-van-card {
   display: flex;
   align-items: center;
+}
+.host-van-card img {
+  border-radius: 5px;
 }
 .host-van-card-desc {
   padding: 10px;
@@ -381,4 +385,24 @@ i[class*="van-type-"] {
   color: #161616;
   text-decoration: underline;
   font-weight: 700;
+}
+.host-van-detail-info > h4 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+.host-van-detail-info > h4 > span {
+  font-weight: 500;
+}
+.host-van-photos {
+  border-radius: 5px;
+}
+.host-van-price {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.host-van-price > span {
+  font-size: 16px;
+  color: #4d4d4d;
 }
