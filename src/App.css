@@ -70,12 +70,13 @@ footer {
   height: 74px;
   width: 100%;
   display: flex;
-
   justify-content: center;
   align-items: center;
   margin-top: auto;
-
   font-weight: 500;
+  position: sticky;
+  left: 0;
+  bottom: 0;
 }
 
 .link-button {
@@ -203,11 +204,22 @@ footer {
 .van-list-container button {
   margin-right: 20px;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+.van-list-filter-buttons {
+  margin-right: 20px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3px;
 }
 
 .van-type {
   height: 34px;
   padding: 6px 26px;
+
   font-style: normal;
   font-weight: 500;
   border: none;
@@ -215,6 +227,8 @@ footer {
   background-color: #ffead0;
   color: #4d4d4d;
   transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  text-align: center;
 }
 
 .van-type:hover {
@@ -246,6 +260,7 @@ footer {
 
 .van-type.clear-filters {
   margin-left: -20px;
+
   height: 34px;
   padding: 6px 26px;
   font-style: normal;
@@ -255,6 +270,19 @@ footer {
   text-decoration: underline;
   background-color: transparent;
   color: #4d4d4d;
+}
+.clear-filters {
+  margin-left: auto;
+  font-style: normal;
+  font-weight: 500;
+  border: none;
+  text-decoration: underline;
+  background-color: transparent;
+  color: #4d4d4d;
+}
+.clear-filters:hover {
+  color: black;
+  font-weight: bold;
 }
 
 i[class*="van-type-"] {
@@ -416,7 +444,23 @@ i[class*="van-type-"] {
 hr {
   border: 1px solid #ffead0;
 }
-
+/* 404 page */
+.not-found-container {
+  margin: 100px 20px;
+  text-align: center;
+  color: #4d4d4d;
+}
+.return-to-home {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  margin: 40px 0px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 570px) {
   .van-list {
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -428,5 +472,8 @@ hr {
   .host-van-card-desc {
     margin-top: 20px;
     padding: 0;
+  }
+  .van-list-filter-buttons {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
 }

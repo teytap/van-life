@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import NotFound from "./pages/404";
 import Vans from "./pages/vans/Vans";
 import VanDetail from "./pages/vans/VanDetail";
 import Layout from "./components/Layout";
@@ -39,6 +40,7 @@ function App() {
               </Route>
               <Route path="reviews" element={<Reviews />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
