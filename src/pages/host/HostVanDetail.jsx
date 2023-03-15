@@ -6,6 +6,7 @@ import {
   Outlet,
   useOutletContext,
 } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 export default function HostVanDetail() {
   const params = useParams();
   const [vanDetail, setVanDetail] = useState(null);
@@ -66,7 +67,18 @@ export default function HostVanDetail() {
           <Outlet context={{ vanDetail }} />
         </div>
       ) : (
-        <h2>Loading...</h2>
+        <Oval
+          height={60}
+          width={60}
+          color="grey"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="grey"
+          strokeWidth={3}
+          strokeWidthSecondary={3}
+        />
       )}
     </div>
   );

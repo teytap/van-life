@@ -1,16 +1,29 @@
 import React from "react";
-
+import { getVans } from "../../api";
 import { Link, useSearchParams } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 
 export default function About() {
-  const [vansData, setVansData] = React.useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
+  const [vansData, setVansData] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((data) => setVansData(data.vans));
+    async function loadVans() {
+      setLoading(true);
+      try {
+        const data = await getVans();
+        setVansData(data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadVans();
   }, []);
 
   // condition of displaying filtered types
@@ -49,7 +62,25 @@ export default function About() {
   //     return prevParams;
   //   });
   // }
-
+  if (loading) {
+    return (
+      <Oval
+        height={60}
+        width={60}
+        color="grey"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="oval-loading"
+        secondaryColor="grey"
+        strokeWidth={3}
+        strokeWidthSecondary={3}
+      />
+    );
+  }
+  if (error) {
+    return <h1>There was an error: </h1>;
+  }
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
