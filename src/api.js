@@ -1,5 +1,6 @@
 export async function getVans() {
   const res = await fetch("/api/vans");
+
   if (!res.ok) {
     throw {
       message: "Failed to fetch vans",

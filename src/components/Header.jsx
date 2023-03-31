@@ -25,6 +25,9 @@ export default function Header() {
         >
           Vans
         </NavLink>
+        <NavLink to="/login" className="login-link">
+          <img src="/images/Icon.png" alt="icon" width="20" />
+        </NavLink>
       </nav>
     </header>
   );

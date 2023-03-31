@@ -1,30 +1,18 @@
 import React from "react";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import { getVans } from "../../api";
-import { Link, useSearchParams } from "react-router-dom";
-import { Oval } from "react-loader-spinner";
+//import { Oval } from "react-loader-spinner";
 
-export default function About() {
+export function loader() {
+  //throw new Error("This is an error");
+  return getVans();
+}
+export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const typeFilter = searchParams.get("type");
-  const [vansData, setVansData] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+  const vansData = useLoaderData();
 
-  React.useEffect(() => {
-    async function loadVans() {
-      setLoading(true);
-      try {
-        const data = await getVans();
-        setVansData(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadVans();
-  }, []);
+  const typeFilter = searchParams.get("type");
 
   // condition of displaying filtered types
   const displayedVans = typeFilter
@@ -62,24 +50,9 @@ export default function About() {
   //     return prevParams;
   //   });
   // }
-  if (loading) {
-    return (
-      <Oval
-        height={60}
-        width={60}
-        color="grey"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="oval-loading"
-        secondaryColor="grey"
-        strokeWidth={3}
-        strokeWidthSecondary={3}
-      />
-    );
-  }
+
   if (error) {
-    return <h1>There was an error: </h1>;
+    return <h1>There was an error: {error.message}</h1>;
   }
   return (
     <div className="van-list-container">
@@ -115,7 +88,7 @@ export default function About() {
         >
           Rugged
         </Link>
-        {/* show clear filters if type filter selected */}
+        {/* shows clear filters if type filter selected */}
         {typeFilter ? (
           <Link to="" className="van-type clear-filters">
             Clear filters
